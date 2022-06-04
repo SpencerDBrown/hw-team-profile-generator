@@ -41,8 +41,6 @@ function addEmployee() {
             employeeRole = "GitHub Username";
         } else if (role === "School / Bootcamp Name") {
             employeeRole = "School / Bootcamp Name";
-        } else {
-            employeeRole = "Phone Number";
         }
 
         inquirer.prompt([{
@@ -123,7 +121,7 @@ function addHtml(employee) {
             const school = employee.getSchool();
             data = `<div class="col-6">
             <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Intern</h5>
+            <h5 class="card-header">${name}<hr /><hr />Intern</h5>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">ID: ${id}</li>
                 <li class="list-group-item">Email Address: ${email}</li>
@@ -135,7 +133,7 @@ function addHtml(employee) {
                 const gitHub = employee.getGithub();
                 data = `<div class="col-6">
                 <div class="card mx-auto mb-3" style="width: 18rem">
-                <h5 class="card-header">${name}<br /><br />Engineer</h5>
+                <h5 class="card-header">${name}<hr /><hr />Engineer</h5>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${id}</li>
                     <li class="list-group-item">Email Address: ${email}</li>
@@ -143,19 +141,8 @@ function addHtml(employee) {
                 </ul>
                 </div>
             </div>`;
-        } else {
-            const phoneNumber = employee.getPhoneNumber();
-            data = `<div class="col-6">
-            <div class="card mx-auto mb-3" style="width: 18rem">
-            <h5 class="card-header">${name}<br /><br />Manager</h5>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">ID: ${id}</li>
-                <li class="list-group-item">Email Address: ${email}</li>
-                <li class="list-group-item">Phone Number: ${phoneNumber}</li>
-            </ul>
-            </div>
-        </div>`
-        }
+        } 
+        
         console.log("adding team member");
         fs.appendFile("./src/output.html", data, function (err) {
             if (err) {
